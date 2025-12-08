@@ -22,9 +22,9 @@ repository               : "academicpages/academicpages.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Linke Song 宋林轲"
+  name             : "Linke Song"
   pronouns         : # example: "she/her"  
-  bio              : "Yet another system guy"
+  bio              : "There is nothing new under the sun."
   location         : "Beijing, China"
   employer         : "IIE, UCAS"
   uri              : https://unik-lif.github.io # URL

@@ -7,11 +7,11 @@ redirect_from:
   - /about.html
 ---
 
-I am Linke Song, a first-year PhD Candidate since 2024 (transfered to PhD track), from Institute of Information Engineering, University of Chinese Academy of Sciences. Beforehand, I completed my bachelor degree in Cyberspace Security in University of Chinese Academy of Sciences in 2022, and continued to pursuit my master degree in 2022. 
+I am Linke Song, a PhD Candidate since 2024 (transfered to PhD track), from Institute of Information Engineering, University of Chinese Academy of Sciences. Beforehand, I completed my bachelor degree in Cyberspace Security in University of Chinese Academy of Sciences in 2022, and continued to pursuit my master degree in 2022. 
 
-My research areas mainly revolve around **operating system**, **confidential computing**, and **side channels**. Since 2022, I've remained an avid self-learner of computer courses. I'm quite interested in fields that intersect with my research, such as cryptography, hardware-software co-design, and large language models (LLMs). 
+My research areas revolve around **operating system**, **confidential computing**, and **side channels**. I am an enthusiastic self-learner.
 
-I am very fortunate to be co-advised by [Prof. Wenhao Wang](https://heartever.github.io/) and [Prof. Wei Song](https://wsong83.github.io/index.html).
+I am fortunate to be co-advised by [Prof. Wenhao Wang](https://heartever.github.io/) and [Prof. Wei Song](https://wsong83.github.io/index.html).
 
 I'm confident that I have the capability to quickly meet the minimum requirements of the necessary disciplinary knowledge in order to turn a new idea into reality. I've rebuilt all my basic skills since 2022 by refering to [csdiy.wiki](https://csdiy.wiki). Courses I've taken in my spare time equipped me the base to conduct my research.
 
@@ -31,6 +31,6 @@ Publications
 
 Wenhao Wang, **Linke Song** (first student author), Benshan Mei, Shuang Liu, Shijun Zhao, Shoumeng Yan, XiaoFeng Wang, Dan Meng, Rui Hou 
 
-**The Early Bird Catches the Leak: Unveiling Timing Side Channels in LLM Serving Systems** _(Preprint)_
+**The Early Bird Catches the Leak: Unveiling Timing Side Channels in LLM Serving Systems** _(TIFS'25)_
 
-**Linke Song**, Zixuan Pang, Wenhao Wang, Zihao Wang, XiaoFeng Wang, Hongbo Chen, Wei Song, Yier Jin, Dan Meng, Rui Hou
+**Linke Song**, Zixuan Pang (equal contribution), Wenhao Wang, Zihao Wang, XiaoFeng Wang, Hongbo Chen, Wei Song, Yier Jin, Dan Meng, Rui Hou
