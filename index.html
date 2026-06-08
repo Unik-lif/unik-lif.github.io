@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linke Song</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --c0: #fff;
+    --c1: #f5f5f5;
+    --c2: #e8e8e8;
+    --c3: #bababa;
+    --c4: #777;
+    --c5: #333;
+    --c6: #111;
+    --accent: #2c3e6b;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--c6);
+    background: var(--c0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ── Layout ── */
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 32px 80px;
+  }
+
+  /* ── Header ── */
+  header {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 48px;
+  }
+  header .photo {
+    flex-shrink: 0;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 15%;
+    border: 2px solid var(--c2);
+  }
+  header h1 {
+    font-size: 27px;
+    font-weight: 620;
+    letter-spacing: -0.02em;
+    color: var(--c6);
+    margin-bottom: 4px;
+  }
+  header .role {
+    font-size: 15px;
+    font-weight: 450;
+    color: var(--c5);
+    margin-bottom: 2px;
+  }
+  header .affil {
+    font-size: 14px;
+    color: var(--c4);
+  }
+  header .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    margin-top: 10px;
+    font-size: 13.5px;
+    color: var(--c4);
+  }
+  header .meta a {
+    color: var(--c5);
+    text-decoration: none;
+  }
+  header .meta a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  header .meta .sep { color: var(--c3); user-select: none; }
+
+  /* ── Sections ── */
+  section {
+    margin-bottom: 38px;
+  }
+  section h2 {
+    font-size: 13px;
+    font-weight: 580;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--c4);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--c2);
+    margin-bottom: 18px;
+  }
+
+  /* ── About ── */
+  .about p {
+    font-size: 14.5px;
+    color: var(--c5);
+    max-width: 620px;
+  }
+  .about ul {
+    list-style: none;
+    margin: 8px 0 12px;
+  }
+  .about ul li {
+    position: relative;
+    padding-left: 16px;
+    font-size: 14px;
+    color: var(--c5);
+    line-height: 1.7;
+  }
+  .about ul li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--c3);
+  }
+  .about a, .detail a {
+    color: var(--c5);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--c3);
+  }
+  .about a:hover, .detail a:hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+  }
+
+  /* ── Education ── */
+  .edu-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .edu-row:last-child { margin-bottom: 0; }
+  .edu-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .edu-body {
+    flex: 1;
+    font-size: 14px;
+  }
+  .edu-body .deg {
+    font-weight: 550;
+    color: var(--c6);
+  }
+  .edu-body .detail {
+    font-size: 13px;
+    color: var(--c4);
+    margin-top: 1px;
+  }
+  .edu-date {
+    font-size: 13px;
+    color: var(--c4);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  /* ── Projects ── */
+  .proj {
+    background: var(--c1);
+    border: 1px solid var(--c2);
+    border-radius: 6px;
+    padding: 18px 20px 16px;
+    margin-bottom: 14px;
+  }
+  .proj:last-child { margin-bottom: 0; }
+  .proj-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    margin-bottom: 6px;
+  }
+  .proj-head .name {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--c6);
+  }
+  .proj-head .date {
+    font-size: 12.5px;
+    color: var(--c4);
+    font-variant-numeric: tabular-nums;
+  }
+  .proj-head .role-badge {
+    font-size: 10.5px;
+    font-weight: 520;
+    padding: 1px 7px;
+    border-radius: 10px;
+    background: var(--c1);
+    color: var(--c4);
+    border: 1px solid var(--c2);
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .proj-meta {
+    font-size: 12.5px;
+    color: var(--c4);
+    margin-bottom: 10px;
+  }
+  .proj-meta a {
+    color: var(--c5);
+    text-decoration: none;
+    border-bottom: 1px solid var(--c3);
+  }
+  .proj-meta a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .proj ul {
+    list-style: none;
+  }
+  .proj ul li {
+    position: relative;
+    padding-left: 15px;
+    font-size: 13.5px;
+    color: var(--c5);
+    line-height: 1.6;
+    margin-bottom: 5px;
+  }
+  .proj ul li:last-child { margin-bottom: 0; }
+  .proj ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 10px;
+    color: var(--c3);
+    line-height: 1.65;
+  }
+
+  /* ── Publications ── */
+  .pub {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--c2);
+  }
+  .pub:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .pub .title {
+    font-weight: 580;
+    font-size: 14.5px;
+    color: var(--c6);
+    margin-bottom: 2px;
+  }
+  .pub .authors {
+    font-size: 13px;
+    color: var(--c4);
+    line-height: 1.5;
+  }
+  .pub .authors .me {
+    font-weight: 540;
+    color: var(--c5);
+  }
+  .pub .venue {
+    font-size: 12.5px;
+    font-style: italic;
+    color: var(--c4);
+    margin-top: 2px;
+  }
+  .pub .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 540;
+    padding: 1px 8px;
+    border-radius: 10px;
+    background: var(--c2);
+    color: var(--c5);
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* ── Skills ── */
+  .skill-group {
+    margin-bottom: 10px;
+    font-size: 13.5px;
+  }
+  .skill-group:last-child { margin-bottom: 0; }
+  .skill-group .label {
+    display: inline-block;
+    width: 160px;
+    color: var(--c6);
+    font-weight: 520;
+  }
+  .skill-group .val {
+    color: var(--c4);
+  }
+
+  /* ── Footer ── */
+  footer {
+    margin-top: 40px;
+    font-size: 12px;
+    color: var(--c3);
+  }
+  .credit {
+    font-size: 11px;
+    color: var(--c3);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .page { padding: 36px 18px 56px; }
+    header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    header .photo { width: 72px; height: 72px; }
+    .edu-row { flex-wrap: wrap; gap: 6px; }
+    .edu-date { text-align: left; }
+    .edu-logo { width: 28px; height: 28px; }
+    .skill-group .label { display: block; width: auto; margin-bottom: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ═══════ Header ═══════ -->
+  <header>
+    <img class="photo" src="images/avatar.webp" alt="Linke Song">
+    <div>
+      <h1>Linke Song</h1>
+      <div class="role">PhD Student in Computer Systems Organization</div>
+      <div class="affil">Institute of Information Engineering, University of Chinese Academy of Sciences</div>
+      <div class="meta">
+      Beijing, China
+      <span class="sep">·</span>
+      <a href="mailto:songlinke@iie.ac.cn">songlinke@iie.ac.cn</a>
+      <span class="sep">·</span>
+      <a href="https://github.com/Unik-lif">GitHub</a>
+      <span class="sep">·</span>
+      <a href="cv/main.pdf">CV (EN)</a>
+      <span class="sep">·</span>
+      <a href="cv/main_cn.pdf">CV (中文)</a>
+    </div>
+    </div>
+  </header>
+
+  <!-- ═══════ About ═══════ -->
+  <section class="about">
+    <p>
+      I am a PhD candidate at UCAS / IIE, transferred from the master's track in 2024.
+      I work under the supervision of
+      <a href="https://wsong83.github.io/">Prof.&nbsp;Wei&nbsp;Song</a> and
+      <a href="https://heartever.github.io/">Prof.&nbsp;Wenhao&nbsp;Wang</a>.
+      My research lies in computer systems security — operating systems, virtualization,
+      and trusted execution environments. I build practical systems that make
+      confidential computing more secure and scalable.
+    </p>
+    <p>
+      I am an enthusiastic self-learner. Since 2022 I have been systematically
+      rebuilding my CS foundations, guided by <a href="https://csdiy.wiki/">csdiy.wiki</a>
+      and documented in <a href="https://github.com/Unik-lif/course_notes">my course notes</a>.
+    </p>
+    <p>
+      <strong>NaCRE is approaching its final stage. I am actively seeking industry
+      internship opportunities in the following areas:</strong>
+    </p>
+    <ul>
+      <li>Agent systems</li>
+      <li>KV cache infrastructure</li>
+      <li>AI agent containers and sandboxing</li>
+    </ul>
+    <p>
+      <strong>If you find my work relevant, I would be delighted to hear from you — thank you! &#x1F64F;</strong>
+    </p>
+  </section>
+
+  <!-- ═══════ Education ═══════ -->
+  <section>
+    <h2>Education</h2>
+    <div class="edu-list">
+      <div class="edu-row">
+        <img class="edu-logo" src="images/iie-logo.png" alt="IIE">
+        <div class="edu-body">
+          <div class="deg">PhD, Computer Systems Organization</div>
+          <div class="detail">University of Chinese Academy of Sciences, Institute of Information Engineering</div>
+          <div class="detail">Transferred from master's track · Advisor: <a href="https://wsong83.github.io/">Prof. Wei Song</a>, <a href="https://heartever.github.io/">Prof. Wenhao Wang</a></div>
+        </div>
+        <div class="edu-date">2024 – now</div>
+      </div>
+      <div class="edu-row">
+        <img class="edu-logo" src="images/iie-logo.png" alt="IIE">
+        <div class="edu-body">
+          <div class="deg">M.Eng, Cyberspace Security</div>
+          <div class="detail">University of Chinese Academy of Sciences, Institute of Information Engineering</div>
+          <div class="detail">Advisor: Prof. Wenhao Wang · GPA 3.83 / 4.00</div>
+        </div>
+        <div class="edu-date">2022 – 2024</div>
+      </div>
+      <div class="edu-row">
+        <img class="edu-logo" src="images/ucas-logo.jpg" alt="UCAS">
+        <div class="edu-body">
+          <div class="deg">B.Eng, Cyberspace Security</div>
+          <div class="detail">University of Chinese Academy of Sciences</div>
+          <div class="detail">Advisor: Prof. Wenhao Wang, Prof. Dongdai Lin · GPA 3.70 / 4.00 (Top 30%)</div>
+        </div>
+        <div class="edu-date">2018 – 2022</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ Teaching ═══════ -->
+  <section>
+    <h2>Teaching</h2>
+    <div class="card">
+      <div class="card-row">
+        <span class="t">Teaching Assistant, Digital Circuits</span>
+        <span class="d">Fall 2025</span>
+      </div>
+      <div class="sub">Undergraduate course, School of Cyber Science and Technology, University of Chinese Academy of Sciences</div>
+    </div>
+  </section>
+
+  <!-- ═══════ Research ═══════ -->
+  <section>
+    <h2>Research Projects</h2>
+
+    <div class="proj">
+      <div class="proj-head">
+        <span class="name">NaCRE: Native Confidential Container with RISC-V Enforcement</span>
+        <span class="date">2025.5 – present</span>
+      </div>
+      <div class="proj-meta">
+        Role: solo &nbsp;|&nbsp; C · OpenSBI · Linux Kernel · RunC · Qemu &nbsp;|&nbsp;
+        <a href="https://github.com/Unik-lif/NaCC">github.com/Unik-lif/NaCC</a>
+      </div>
+      <ul>
+        <li>Hardware-software co-design enabling scalable, native-like confidential containers on RISC-V — avoiding invasive kernel modifications while maintaining security with minimal overhead.</li>
+        <li>Analyze memory sharing patterns among container processes to identify unaddressed security challenges; prototype with customized OpenSBI, Linux Kernel, and RunC.</li>
+      </ul>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <span class="name">LLM Side Channel</span>
+        <span class="date">2024.6 – 2025.4</span>
+      </div>
+      <div class="proj-meta">
+        Role: co-lead &nbsp;|&nbsp; Python &nbsp;|&nbsp;
+        <a href="https://github.com/Maxppddcsz/llm-sidechannel">github.com/Maxppddcsz/llm-sidechannel</a>
+      </div>
+      <ul>
+        <li>Discovered that KV Cache timing side channels in LLM serving systems can leak system prompts. Characterized cache hit/miss timing differences in SGLang.</li>
+        <li>Designed a token-by-token extraction algorithm. Published at TIFS 2025.</li>
+      </ul>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <span class="name">NestedSGX</span>
+        <span class="date">2023.7 – 2024.5</span>
+      </div>
+      <div class="proj-meta">
+        Role: co-lead &nbsp;|&nbsp; Rust · C · Python · Linux Kernel Module · Qemu &nbsp;|&nbsp;
+        <a href="https://github.com/NestedSGX/">github.com/NestedSGX</a>
+      </div>
+      <ul>
+        <li>Designed an inter-VM security hardening method; implemented a customized Linux-svsm monitor for NestedSGX Enclave achieving strong performance and compatibility.</li>
+        <li>Built Guest Kernel Module and performance analysis framework; received 2 AE badges. Published at NDSS 2025.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════ Publications ═══════ -->
+  <section>
+    <h2>Publications</h2>
+    <div class="pub">
+      <div class="title">The Early Bird Catches the Leak: Unveiling Timing Side Channels in LLM Serving Systems</div>
+      <div class="authors"><span class="me">Linke Song</span>, Zixuan Pang (equal contribution), Wenhao Wang*, Zihao Wang, XiaoFeng Wang, Hongbo Chen, Wei Song, Yier Jin, Dan Meng, Rui Hou</div>
+      <div class="venue">TIFS 2025 <span class="badge">J.1</span></div>
+    </div>
+    <div class="pub">
+      <div class="title">The Road to Trust: Building Enclaves within Confidential VMs</div>
+      <div class="authors">Wenhao Wang, <span class="me">Linke Song</span> (first student author), Benshan Mei, Shuang Liu, Shijun Zhao, Shoumeng Yan*, XiaoFeng Wang, Dan Meng, Rui Hou</div>
+      <div class="venue">NDSS 2025 <span class="badge">C.1</span></div>
+    </div>
+  </section>
+
+  <!-- ═══════ Skills ═══════ -->
+  <section>
+    <h2>Skills</h2>
+    <div class="skill-group">
+      <span class="label">Languages</span>
+      <span class="val">C, Rust, Python, Java, Lisp</span>
+    </div>
+    <div class="skill-group">
+      <span class="label">Tools</span>
+      <span class="val">Git, Docker, Qemu, OpenSBI, Linux Kernel</span>
+    </div>
+    <div class="skill-group">
+      <span class="label">Areas</span>
+      <span class="val">Trusted Execution Environments, Operating Systems, Virtualization, Container</span>
+    </div>
+    <div class="skill-group">
+      <span class="label">Architectures</span>
+      <span class="val">x86, RISC-V</span>
+    </div>
+  </section>
+
+  <footer>
+    Linke Song · 2025<br>
+    <span class="credit">Page designed with DeepSeek</span>
+  </footer>
+
+</div>
+</body>
+</html>
