@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Linke Song</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -440,46 +441,61 @@
 
     <div class="proj">
       <div class="proj-head">
-        <span class="name">NaCRE</span>
+        <span class="name">NaCRE: Native Confidential Containers on RISC-V</span>
         <span class="date">2025.5 – present</span>
       </div>
       <div class="proj-meta">
         Role: solo &nbsp;|&nbsp; C · OpenSBI · Linux Kernel · RunC · Qemu &nbsp;|&nbsp;
-        <a href="https://github.com/Unik-lif/NaCC">github.com/Unik-lif/NaCC</a>
+        <a href="https://github.com/Unik-lif/NaCC" title="GitHub"><i class="fab fa-github"></i> code</a> &nbsp;|&nbsp; Working prototype; preparing for arXiv
       </div>
       <ul>
-        <li>Hardware-software co-design for scalable confidential containers on RISC-V — avoiding invasive kernel modifications while preserving security with minimal overhead.</li>
-        <li>Building prototype with customized OpenSBI, Linux Kernel, and RunC.</li>
+        <li><strong>Problem:</strong> Existing confidential containers repurpose hardware mechanisms not designed for containers, sacrificing native-ness. Arm CCA treats containers as TEE workloads with large contiguous memory — no primitives purpose-built for native confidential containers.</li>
+        <li><strong>Approach:</strong> Reused RISC-V PMP with bitmap + MMU modifications to protect page-table pages and data pages without fragmenting Linux's native memory allocation — containers stay ordinary processes.</li>
+        <li><strong>vs. Existing:</strong> No virtualization/confidential-computing hardware dependency (unlike Kata/gVisor). Introduces a new hardware abstraction layer for containers; native Linux allocation with targeted hardening, no invasive kernel patches.</li>
+        <li><strong>Security:</strong> Container lifecycle protection integrated into the full address-allocation pipeline.</li>
+        <li><strong>Performance:</strong> Near-zero overhead vs. native Docker on compute-intensive tasks; under 2× slowdown on memory-intensive tasks — significantly better than microVM approaches.</li>
+        <li><strong>My role:</strong> Sole developer — hardware ISA primitives, Linux kernel critical-path patching (preserving RSS counter semantics), OpenSBI integration, eCall interface and protocol design.</li>
       </ul>
     </div>
 
     <div class="proj">
       <div class="proj-head">
-        <span class="name">LLM Side Channel</span>
+        <span class="name">LLM Side-Channel Attack on KV Cache</span>
         <span class="date">2024.6 – 2025.4</span>
       </div>
       <div class="proj-meta">
-        Role: co-lead &nbsp;|&nbsp; Python &nbsp;|&nbsp;
-        <a href="https://github.com/Maxppddcsz/llm-sidechannel">github.com/Maxppddcsz/llm-sidechannel</a>
+        Role: co-lead &nbsp;|&nbsp; Python · SGLang · GPT-Cache · LLaMAFactory &nbsp;|&nbsp;
+        <a href="https://github.com/Maxppddcsz/llm-sidechannel" title="GitHub"><i class="fab fa-github"></i> code</a> &nbsp;|&nbsp;
+        <a href="https://arxiv.org/pdf/2409.20002" title="arXiv"><i class="far fa-file-pdf"></i> arXiv</a> &nbsp;|&nbsp;
+        <a href="https://sites.google.com/view/early-bird-catches-the-leak" title="Demo"><i class="fas fa-globe"></i> demo</a> &nbsp;|&nbsp;
+        <a href="https://github.com/sgl-project/sglang/issues/1504" title="SGLang #1504"><i class="fas fa-bug"></i> SGLang #1504</a>
       </div>
       <ul>
-        <li>Discovered that KV Cache timing side channels in LLM serving systems can leak system prompts. Characterized cache hit/miss timing differences in SGLang.</li>
-        <li>Designed a token-by-token extraction algorithm. Published at TIFS 2025.</li>
+        <li><strong>Problem:</strong> KV cache reuse in LLM serving systems creates a timing side channel — TTFT reductions reveal victim prompt overlap. Found exploitable in SGLang (prefix sharing) and GPT-Cache (semantic similarity).</li>
+        <li><strong>Approach:</strong> In SGLang, a single shared token with Llama 3.1 8B/70B yields measurable latency drop. Designed token-by-token prompt recovery; overcame GPU voltage/frequency noise with a countermeasure, achieving <strong>99% TPR</strong>.</li>
+        <li><strong>GPT-Cache Attack:</strong> Discovered a distinct vector — semantically similar queries with identical sensitive info trigger TTFT speedups via similarity-based cache matching.</li>
+        <li><strong>Defense:</strong> Proposed coarse-grained token-sharing defense that expands the attacker's guessing space.</li>
+        <li><strong>Impact:</strong> One of the earliest two teams to report KV-cache privacy risks to SGLang (the other: ByteDance Security Research, same week). Presented at SGLang biweekly meeting (Oct. 19, 2024).</li>
+        <li><strong>Publication:</strong> Submitted to USENIX Security'25, ACM CCS'25; accepted at <strong>TIFS'25</strong> (CCF-A journal).</li>
       </ul>
     </div>
 
     <div class="proj">
       <div class="proj-head">
-        <span class="name">NestedSGX</span>
+        <span class="name">NestedSGX: Nested Enclaves in Confidential VMs</span>
         <span class="date">2023.7 – 2024.5</span>
       </div>
       <div class="proj-meta">
-        Role: co-lead &nbsp;|&nbsp; Rust · C · Python · Linux Kernel Module · Qemu &nbsp;|&nbsp;
-        <a href="https://github.com/NestedSGX/">github.com/NestedSGX</a>
+        Role: co-lead &nbsp;|&nbsp; Rust · C · Python · Linux Kernel Module · Qemu · AMD SEV-SNP &nbsp;|&nbsp;
+        <a href="https://github.com/NestedSGX/" title="GitHub"><i class="fab fa-github"></i> code</a> &nbsp;|&nbsp;
+        <a href="https://www.ndss-symposium.org/wp-content/uploads/2025-385-paper.pdf" title="NDSS'25 paper"><i class="far fa-file-pdf"></i> paper</a>
       </div>
       <ul>
-        <li>Designed an inter-VM security hardening method; implemented a customized Linux-svsm monitor for NestedSGX Enclave achieving strong performance and compatibility.</li>
-        <li>Built Guest Kernel Module and performance analysis framework; received 2 AE badges. Published at NDSS 2025.</li>
+        <li><strong>Problem:</strong> Confidential VMs face a large TCB in the guest OS. No existing mechanism to establish trusted enclaves inside a CVM while keeping the guest OS out of the TCB.</li>
+        <li><strong>Approach:</strong> Leveraged AMD SEV-SNP VMPL to introduce a lightweight hypervisor within the CVM, de-privileging the guest OS — even a compromised kernel cannot access enclave memory.</li>
+        <li><strong>Compatibility:</strong> Built trusted enclave runtime atop Occlum and Intel SGX SDK, compatible with existing SGX ecosystem — unmodified SGX apps run inside the nested enclave.</li>
+        <li><strong>Engineering:</strong> Modified Linux kernel drivers; wrote in-VM hypervisor in Rust (page faults, error paths, custom trampoline for cross-privilege transitions).</li>
+        <li><strong>Recognition:</strong> <strong>2 AE badges</strong>; invited by Asterinas community for online seminar. Submitted to ASPLOS'24, ACM CCS'24; accepted at <strong>NDSS'25</strong> (CCF-A conference).</li>
       </ul>
     </div>
   </section>
@@ -490,12 +506,12 @@
     <div class="pub">
       <div class="title">The Early Bird Catches the Leak: Unveiling Timing Side Channels in LLM Serving Systems</div>
       <div class="authors"><span class="me">Linke Song</span>, Zixuan Pang (equal contribution), Wenhao Wang*, Zihao Wang, XiaoFeng Wang, Hongbo Chen, Wei Song, Yier Jin, Dan Meng, Rui Hou</div>
-      <div class="venue">TIFS 2025 <span class="badge">J.1</span></div>
+      <div class="venue">TIFS 2025 <span class="badge">J.1</span> <a href="https://arxiv.org/pdf/2409.20002" title="PDF"><i class="far fa-file-pdf"></i></a></div>
     </div>
     <div class="pub">
       <div class="title">The Road to Trust: Building Enclaves within Confidential VMs</div>
       <div class="authors">Wenhao Wang, <span class="me">Linke Song</span> (first student author), Benshan Mei, Shuang Liu, Shijun Zhao, Shoumeng Yan*, XiaoFeng Wang, Dan Meng, Rui Hou</div>
-      <div class="venue">NDSS 2025 <span class="badge">C.1</span></div>
+      <div class="venue">NDSS 2025 <span class="badge">C.1</span> <a href="https://www.ndss-symposium.org/wp-content/uploads/2025-385-paper.pdf" title="PDF"><i class="far fa-file-pdf"></i></a></div>
     </div>
   </section>
 
@@ -504,7 +520,7 @@
     <h2>Skills</h2>
     <div class="skill-group">
       <span class="label">Languages</span>
-      <span class="val">C, Rust, Python, Java, Lisp</span>
+      <span class="val">C, Rust, Python</span>
     </div>
     <div class="skill-group">
       <span class="label">Tools</span>
