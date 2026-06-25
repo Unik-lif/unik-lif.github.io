@@ -371,9 +371,11 @@
       confidential computing more secure and scalable.
     </p>
     <p>
-      I am an enthusiastic self-learner. Since 2022 I have been systematically
-      rebuilding my CS foundations, guided by <a href="https://csdiy.wiki/">csdiy.wiki</a>
-      and documented in <a href="https://github.com/Unik-lif/course_notes">my course notes</a>.
+      My work spans the full systems stack — from hardware primitives and firmware
+      through kernel modifications to userspace runtimes. Most projects were built
+      independently or as the primary engineer. I also maintain a self-study repository
+      (<a href="https://github.com/Unik-lif/course_notes">course\_notes</a>) documenting
+      my ongoing CS foundation work since 2022.
     </p>
     <p>
       Beyond my core research, I have a growing interest in LLM agent infrastructure —
@@ -451,7 +453,7 @@
         <li><strong>vs. Existing:</strong> No virtualization/confidential-computing hardware dependency (unlike Kata/gVisor). Introduces a new hardware abstraction layer for containers; native Linux allocation with targeted hardening, no invasive kernel patches.</li>
         <li><strong>Security:</strong> Container lifecycle protection integrated into the full address-allocation pipeline.</li>
         <li><strong>Performance:</strong> Near-zero overhead vs. native Docker on compute-intensive tasks; under 2× slowdown on memory-intensive tasks — significantly better than microVM approaches.</li>
-        <li><strong>My role:</strong> Sole developer — hardware ISA primitives, Linux kernel critical-path patching (preserving RSS counter semantics), OpenSBI integration, eCall interface and protocol design.</li>
+        <li><strong>My role:</strong> Sole developer spanning the entire stack — custom hardware ISA primitives, Linux kernel critical-path modifications (page allocation, RSS accounting, page-fault handling — preserving existing metadata correctness), OpenSBI firmware integration, eCall interface and protocol design.</li>
       </ul>
     </div>
 
@@ -491,7 +493,7 @@
         <li><strong>Problem:</strong> Confidential VMs face a large TCB in the guest OS. No existing mechanism to establish trusted enclaves inside a CVM while keeping the guest OS out of the TCB.</li>
         <li><strong>Approach:</strong> Leveraged AMD SEV-SNP VMPL to introduce a lightweight hypervisor within the CVM, de-privileging the guest OS — even a compromised kernel cannot access enclave memory.</li>
         <li><strong>Compatibility:</strong> Built trusted enclave runtime atop Occlum and Intel SGX SDK, compatible with existing SGX ecosystem — unmodified SGX apps run inside the nested enclave.</li>
-        <li><strong>Engineering:</strong> Modified Linux kernel drivers; wrote in-VM hypervisor in Rust (page faults, error paths, custom trampoline for cross-privilege transitions).</li>
+        <li><strong>Engineering:</strong> Modified Linux kernel drivers; wrote in-VM hypervisor in Rust (<strong>7,000+ LoC</strong> — page faults, error paths, custom trampoline for cross-privilege transitions).</li>
         <li><strong>Recognition:</strong> <strong>2 AE badges</strong>; invited by Asterinas community for online seminar. Submitted to ASPLOS'24, ACM CCS'24; accepted at <strong>NDSS'25</strong> (CCF-A conference).</li>
       </ul>
     </div>
