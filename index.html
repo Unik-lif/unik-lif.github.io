@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Linke Song</title>
+<meta name="description" content="Linke Song — PhD student working on systems security, confidential computing, and AI infrastructure.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Linke Song — Systems, Security & AI">
+<meta property="og:description" content="Research, projects, and writing on systems security, confidential computing, and AI infrastructure.">
+<meta property="og:url" content="https://unik-lif.github.io/">
+<meta property="og:image" content="https://unik-lif.github.io/images/og-between-layers.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://unik-lif.github.io/images/og-between-layers.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,6 +42,45 @@
     max-width: 760px;
     margin: 0 auto;
     padding: 64px 32px 80px;
+  }
+
+  /* ── Navigation ── */
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 34px;
+    font-size: 12.5px;
+  }
+  .site-nav .monogram {
+    color: var(--c4);
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+  .site-nav .links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .site-nav .links a {
+    color: var(--c4);
+    padding: 5px 9px;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+  .site-nav .links a:hover {
+    color: var(--c6);
+    background: var(--c1);
+  }
+  .site-nav .links .blog-link {
+    color: var(--c0);
+    background: var(--c6);
+    padding: 6px 12px;
+  }
+  .site-nav .links .blog-link:hover {
+    color: var(--c0);
+    background: var(--accent);
   }
 
   /* ── Header ── */
@@ -88,6 +135,70 @@
     text-decoration-thickness: 1px;
   }
   header .meta .sep { color: var(--c3); user-select: none; }
+
+  /* ── Featured blog ── */
+  .blog-feature {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: -10px 0 42px;
+    padding: 25px 72px 24px 26px;
+    color: var(--c0);
+    background: var(--c6);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 160ms ease, background 160ms ease;
+  }
+  .blog-feature::after {
+    content: "\2197";
+    position: absolute;
+    top: 22px;
+    right: 24px;
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--c3);
+    transition: transform 160ms ease, color 160ms ease;
+  }
+  .blog-feature:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+  .blog-feature:hover::after {
+    color: var(--c0);
+    transform: translate(2px, -2px);
+  }
+  .blog-feature .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    color: var(--c3);
+    font-size: 10.5px;
+    font-weight: 650;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .blog-feature .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #7ee2b8;
+    box-shadow: 0 0 0 4px rgba(126, 226, 184, 0.12);
+  }
+  .blog-feature h2 {
+    margin-bottom: 7px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.28;
+    letter-spacing: -0.015em;
+  }
+  .blog-feature p {
+    max-width: 560px;
+    color: var(--c3);
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
 
   /* ── Sections ── */
   section {
@@ -326,8 +437,12 @@
   /* ── Responsive ── */
   @media (max-width: 640px) {
     .page { padding: 36px 18px 56px; }
+    .site-nav { margin-bottom: 28px; }
+    .site-nav .links a:not(.blog-link) { display: none; }
     header { flex-direction: column; align-items: flex-start; gap: 16px; }
     header .photo { width: 72px; height: 72px; }
+    .blog-feature { margin-top: 0; padding: 22px 54px 21px 21px; }
+    .blog-feature h2 { font-size: 21px; }
     .edu-row { flex-wrap: wrap; gap: 6px; }
     .edu-date { text-align: left; }
     .edu-logo { width: 28px; height: 28px; }
@@ -337,6 +452,15 @@
 </head>
 <body>
 <div class="page">
+
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a class="monogram" href="index.html" aria-label="Linke Song home">LS</a>
+    <div class="links">
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a class="blog-link" href="blog/">Blog <span aria-hidden="true">↗</span></a>
+    </div>
+  </nav>
 
   <!-- ═══════ Header ═══════ -->
   <header>
@@ -352,12 +476,20 @@
       <span class="sep">·</span>
       <a href="https://github.com/Unik-lif">GitHub</a>
       <span class="sep">·</span>
+      <a href="blog/">Blog</a>
+      <span class="sep">·</span>
       <a href="cv/main.pdf">CV (EN)</a>
       <span class="sep">·</span>
       <a href="cv/main_cn.pdf">CV (中文)</a>
     </div>
     </div>
   </header>
+
+  <a class="blog-feature" href="blog/" aria-label="Visit Between Layers, Linke Song's blog">
+    <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Now writing · Blog</div>
+    <h2>Between Layers / 层间札记</h2>
+    <p>从指令集到智能体，记录系统安全、机密计算、AI 基础设施，以及研究与构建过程中的思考。</p>
+  </a>
 
   <!-- ═══════ About ═══════ -->
   <section class="about">
@@ -433,7 +565,7 @@
   </section>
 
   <!-- ═══════ Research ═══════ -->
-  <section>
+  <section id="research">
     <h2>Research Projects</h2>
 
     <div class="proj">
@@ -499,7 +631,7 @@
   </section>
 
   <!-- ═══════ Publications ═══════ -->
-  <section>
+  <section id="publications">
     <h2>Publications</h2>
     <div class="pub">
       <div class="title">The Early Bird Catches the Leak: Unveiling Timing Side Channels in LLM Serving Systems</div>
@@ -535,8 +667,8 @@
   </section>
 
   <footer>
-    Linke Song · 2025<br>
-    <span class="credit">Page designed with DeepSeek</span>
+    Linke Song · 2026<br>
+    <span class="credit">Built with curiosity, maintained with care.</span>
   </footer>
 
 </div>

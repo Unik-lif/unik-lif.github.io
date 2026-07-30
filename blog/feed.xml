@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Between Layers / 层间札记</title>
+    <link>https://unik-lif.github.io/blog/</link>
+    <description>Linke Song 的系统、安全与 AI 基础设施笔记。</description>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 30 Jul 2026 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://unik-lif.github.io/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>从这里开始：为什么写 Between Layers</title>
+      <link>https://unik-lif.github.io/blog/posts/hello-between-layers.html</link>
+      <guid>https://unik-lif.github.io/blog/posts/hello-between-layers.html</guid>
+      <pubDate>Thu, 30 Jul 2026 00:00:00 +0800</pubDate>
+      <description>从抽象层、Disco 与 NaCRE 出发，谈谈学术玩具、AI 时代的职业焦虑、论文之外的不适，以及为什么我仍想给自己一个交代。</description>
+    </item>
+  </channel>
+</rss>
