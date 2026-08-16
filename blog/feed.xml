@@ -5,8 +5,15 @@
     <link>https://unik-lif.github.io/blog/</link>
     <description>Linke Song 的系统、安全与 AI 基础设施笔记。</description>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 30 Jul 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 16 Aug 2026 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://unik-lif.github.io/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Native，不等于跳过学习</title>
+      <link>https://unik-lif.github.io/blog/posts/ai-native-and-learning.html</link>
+      <guid>https://unik-lif.github.io/blog/posts/ai-native-and-learning.html</guid>
+      <pubDate>Sun, 16 Aug 2026 00:00:00 +0800</pubDate>
+      <description>在 BOOM、Chisel 和 FPGA 项目中边做边学：AI 可以推动项目，但欠下的理解债，最终仍要自己补上。</description>
+    </item>
     <item>
       <title>从这里开始：为什么写 Between Layers</title>
       <link>https://unik-lif.github.io/blog/posts/hello-between-layers.html</link>
