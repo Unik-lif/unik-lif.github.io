@@ -500,7 +500,8 @@
       My work spans hardware ISA, firmware, Linux kernel internals, and userspace —
       independently built. Past projects: NestedSGX (built nested enclaves within confidential VMs;
       NDSS'25), a solo-built confidential container system (custom ISA + kernel
-      critical-path patching + firmware enforcement), and an LLM KV-cache side-channel
+      critical-path patching + firmware enforcement; now being ported to the BOOM
+      RISC-V core and FPGA platforms), and an LLM KV-cache side-channel
       attack (led GPU noise mitigation, attack design, and implementation;
       <strong>99% TPR</strong>, TIFS'25).
       Research interests: OS-level isolation, virtualization, sandboxing, TEEs,
@@ -574,9 +575,9 @@
         <span class="date">2025.5 – present</span>
       </div>
       <div class="proj-meta">
-        Role: solo &nbsp;|&nbsp; C · OpenSBI · Linux Kernel · RunC · Qemu &nbsp;|&nbsp;
-        <a href="https://github.com/NaTiveCoCo" title="GitHub"><i class="fab fa-github"></i> code</a> &nbsp;|&nbsp; Working prototype; preparing for arXiv &nbsp;|&nbsp;
-        <a href="cv/nacre_poster.pdf" title="Poster"><i class="far fa-image"></i> poster</a>
+        Role: solo &nbsp;|&nbsp; C · OpenSBI · Linux Kernel · RunC · Qemu · Chipyard · BOOM &nbsp;|&nbsp;
+        <a href="https://github.com/NaTiveCoCo" title="GitHub"><i class="fab fa-github"></i> code</a> &nbsp;|&nbsp; Working QEMU prototype; porting to FPGA &amp; BOOM &nbsp;|&nbsp;
+        <a href="cv/nacre_poster_ccf_nss_2026.pdf" title="Poster at CCF-NSS 2026"><i class="far fa-image"></i> poster (CCF-NSS 2026)</a>
       </div>
       <ul>
         <li><strong>Problem:</strong> Existing confidential containers repurpose hardware mechanisms not designed for containers, sacrificing native-ness. Arm CCA treats containers as TEE workloads with large contiguous memory — no primitives purpose-built for native confidential containers.</li>
@@ -584,6 +585,8 @@
         <li><strong>vs. Existing:</strong> No virtualization/confidential-computing hardware dependency (unlike Kata/gVisor). Introduces a new hardware abstraction layer for containers; native Linux allocation with targeted hardening, no invasive kernel patches.</li>
         <li><strong>Security:</strong> Container lifecycle protection integrated into the full address-allocation pipeline.</li>
         <li><strong>Performance:</strong> Near-zero overhead vs. native Docker on compute-intensive tasks; under 2× slowdown on memory-intensive tasks — significantly better than microVM approaches.</li>
+        <li><strong>Hardware porting (in progress):</strong> Porting NaCRE beyond its QEMU model onto real hardware platforms — the <strong>BOOM</strong> out-of-order RISC-V core (via Chipyard) and <strong>FPGA</strong> prototyping (FireSim flow), parameterizing the physical layout (OpenSBI/Linux/Agent/metadata/PTP regions) for FPGA DRAM configurations.</li>
+        <li><strong>Porting work:</strong> Authored the QEMU↔RTL semantic-alignment design that freezes the hardware contract for the port: custom CSRs (<code>nacc_state</code>, <code>nacc_sagent</code>/<code>nacc_eagent</code>, <code>twin_entry</code>, <code>trampoline</code>), <code>acall</code>/<code>aret</code> custom instructions, PTW-time page-table checks, the per-PFN 2-bit metadata bitmap, and TLB revocation on tag change; specified the (access source × privilege × state × PFN tag) → allow/fault access matrix and a T0–T8 bare-metal smoke suite that co-validates QEMU against Verilator, explicitly separating architecture from emulator conveniences (e.g., A/D write-back, <code>cpu_abort()</code>).</li>
         <li><strong>My role:</strong> Sole developer spanning the entire stack — custom hardware ISA primitives, Linux kernel critical-path modifications (page allocation, RSS accounting, page-fault handling — preserving existing metadata correctness), OpenSBI firmware integration, eCall interface and protocol design.</li>
       </ul>
     </div>
@@ -643,6 +646,11 @@
       <div class="authors">Wenhao Wang, <span class="me">Linke Song</span> (first student author), Benshan Mei, Shuang Liu, Shijun Zhao, Shoumeng Yan*, XiaoFeng Wang, Dan Meng, Rui Hou</div>
       <div class="venue">NDSS 2025 <span class="badge">C.1</span> <a href="https://www.ndss-symposium.org/wp-content/uploads/2025-385-paper.pdf" title="PDF"><i class="far fa-file-pdf"></i></a></div>
     </div>
+    <div class="pub">
+      <div class="title">NACRE: Native Confidential Containers on RISC-V</div>
+      <div class="authors"><span class="me">Linke Song</span>, Wenhao Wang*, Weijie Liu, Rui Hou</div>
+      <div class="venue">Poster, 1st CCF Conference on Network and System Security (CCF-NSS 2026), Hangzhou, China <span class="badge">Poster</span> <a href="cv/nacre_poster_ccf_nss_2026.pdf" title="Poster PDF"><i class="far fa-file-pdf"></i></a></div>
+    </div>
   </section>
 
   <!-- ═══════ Skills ═══════ -->
@@ -654,7 +662,7 @@
     </div>
     <div class="skill-group">
       <span class="label">Tools</span>
-      <span class="val">Git, Docker, Qemu, OpenSBI, Linux Kernel</span>
+      <span class="val">Git, Docker, Qemu, OpenSBI, Linux Kernel, Chipyard, FireSim</span>
     </div>
     <div class="skill-group">
       <span class="label">Areas</span>
