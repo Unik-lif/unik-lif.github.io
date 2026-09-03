@@ -586,7 +586,7 @@
         <li><strong>Security:</strong> Container lifecycle protection integrated into the full address-allocation pipeline.</li>
         <li><strong>Performance:</strong> Near-zero overhead vs. native Docker on compute-intensive tasks; under 2× slowdown on memory-intensive tasks — significantly better than microVM approaches.</li>
         <li><strong>Hardware porting (in progress):</strong> Porting NaCRE beyond its QEMU model onto real hardware platforms — the <strong>BOOM</strong> out-of-order RISC-V core (via Chipyard) and <strong>FPGA</strong> prototyping (FireSim flow), parameterizing the physical layout (OpenSBI/Linux/Agent/metadata/PTP regions) for FPGA DRAM configurations.</li>
-        <li><strong>Porting work:</strong> Authored the QEMU↔RTL semantic-alignment design that freezes the hardware contract for the port: custom CSRs (<code>nacc_state</code>, <code>nacc_sagent</code>/<code>nacc_eagent</code>, <code>twin_entry</code>, <code>trampoline</code>), <code>acall</code>/<code>aret</code> custom instructions, PTW-time page-table checks, the per-PFN 2-bit metadata bitmap, and TLB revocation on tag change; specified the (access source × privilege × state × PFN tag) → allow/fault access matrix and a T0–T8 bare-metal smoke suite that co-validates QEMU against Verilator, explicitly separating architecture from emulator conveniences (e.g., A/D write-back, <code>cpu_abort()</code>).</li>
+        <li><strong>Porting work:</strong> Jointly discussed and finalized the hardware design with <a href="https://github.com/msuadOf">Yifan Bai</a>, who implemented the Agent Mode programming model based on the RISC-V H extension; I authored the QEMU↔RTL semantic-alignment design that freezes the hardware contract for the port — custom CSRs (<code>nacc_state</code>, <code>nacc_sagent</code>/<code>nacc_eagent</code>, <code>twin_entry</code>, <code>trampoline</code>), <code>acall</code>/<code>aret</code> custom instructions, PTW-time page-table checks, the per-PFN 2-bit metadata bitmap, and TLB revocation on tag change; specified the (access source × privilege × state × PFN tag) → allow/fault access matrix and a T0–T8 bare-metal smoke suite that co-validates QEMU against Verilator, explicitly separating architecture from emulator conveniences (e.g., A/D write-back, <code>cpu_abort()</code>).</li>
         <li><strong>My role:</strong> Sole developer spanning the entire stack — custom hardware ISA primitives, Linux kernel critical-path modifications (page allocation, RSS accounting, page-fault handling — preserving existing metadata correctness), OpenSBI firmware integration, eCall interface and protocol design.</li>
       </ul>
     </div>
@@ -662,7 +662,7 @@
     </div>
     <div class="skill-group">
       <span class="label">Tools</span>
-      <span class="val">Git, Docker, Qemu, OpenSBI, Linux Kernel, Chipyard, FireSim</span>
+      <span class="val">Git, Docker, Qemu, OpenSBI, Linux Kernel</span>
     </div>
     <div class="skill-group">
       <span class="label">Areas</span>
