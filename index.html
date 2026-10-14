@@ -288,6 +288,31 @@
     text-align: right;
   }
 
+  /* ── Work experience ── */
+  .work-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+  }
+  .work-head h3 {
+    font-size: 14px;
+    font-weight: 550;
+    color: var(--c6);
+  }
+  .work-date, .work-detail {
+    font-size: 13px;
+    color: var(--c4);
+  }
+  .work-date { font-variant-numeric: tabular-nums; }
+  .work-role {
+    font-size: 14px;
+    color: var(--c5);
+    margin-top: 1px;
+  }
+  .work-detail { margin-top: 1px; }
+
   /* ── Projects ── */
   .proj {
     background: var(--c1);
@@ -571,6 +596,18 @@
         <div class="edu-date">2018 – 2022</div>
       </div>
     </div>
+  </section>
+
+  <!-- ═══════ Work experience ═══════ -->
+  <section id="work-experience" aria-labelledby="work-experience-heading">
+    <h2 id="work-experience-heading">Work Experience</h2>
+    <div class="work-head">
+      <h3>jinghua.security</h3>
+      <span class="work-date"><time datetime="2026-10">Oct 2026</time> – present</span>
+    </div>
+    <div class="work-role">Confidential Computing Intern</div>
+    <p class="work-detail">Working on confidential containers and privacy-preserving inference.</p>
+    <p class="work-detail">Expected end: <time datetime="2027-01">January 2027</time></p>
   </section>
 
   <!-- ═══════ Teaching ═══════ -->
